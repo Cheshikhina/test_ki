@@ -1,0 +1,48 @@
+.section_1__wrap {
+    @include list;
+    display: grid;
+    grid-template-areas:
+    'one two two'
+    'three three four';
+    grid-template-rows: repeat(2, 198px);
+    grid-template-columns: 33.5% 1fr 13.5%;
+    column-gap: 13px;
+    row-gap: 17px;
+    width: 100%;
+    counter-reset: myCounter;
+}
+
+.section_1__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-block1);
+
+    &::before {
+        @include font(number, true);
+        counter-increment: myCounter;
+        content: counter(myCounter);
+    }
+}
+
+.section_1__item:nth-of-type(1) {
+    grid-area: one;
+}
+
+.section_1__item:nth-of-type(2) {
+    grid-area: two;
+
+    @include media-up(lg) {
+        &::before {
+            margin-left: -165px;
+        }
+    }
+}
+
+.section_1__item:nth-of-type(3) {
+    grid-area: three;
+}
+
+.section_1__item:nth-of-type(4) {
+    grid-area: four;
+}

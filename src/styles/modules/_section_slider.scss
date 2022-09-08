@@ -1,0 +1,126 @@
+$slide-btn-offset: 51px;
+$slide-btn-offset-mobile: 15px;
+
+.section_slider {
+    margin: 40px 0;
+    background-color: var(--color-slider);
+}
+
+.section_slider__wrap {
+    position: relative;
+}
+
+.section_slider__btn {
+    @include transition(transform);
+    position: absolute;
+    top: 50%;
+    transform: translateX(0) translateY(-50%);
+    display: none;
+    height: 75px;
+    width: 37.5px;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    outline: 0;
+    z-index: 2;
+
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 52px;
+        height: 2px;
+        background-color: var(--color-text);
+    }
+
+    @include media-up(sm) {
+        display: block;
+    }
+}
+
+.section_slider__btn-prev {
+    left: $slide-btn-offset-mobile;
+
+    @include media-up(md) {
+        left: $slide-btn-offset;
+    }
+
+    &:hover,
+    &:focus {
+        transform: translateX(-2px) translateY(-50%);
+    }
+
+    &::after,
+    &::before {
+        right: 0;
+    }
+
+    &::after {
+        top: 0;
+        transform: rotate(-45deg);
+        transform-origin: top right;
+    }
+
+    &::before {
+        bottom: 0;
+        transform: rotate(45deg);
+        transform-origin: bottom right;
+    }
+}
+
+.section_slider__btn-next {
+    right: $slide-btn-offset-mobile;
+
+    @include media-up(md) {
+        right: $slide-btn-offset;
+    }
+
+    &:hover,
+    &:focus {
+        transform: translateX(2px) translateY(-50%);
+    }
+
+    &::after,
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        top: 0;
+        transform: rotate(45deg);
+        transform-origin: top left;
+    }
+
+    &::before {
+        bottom: 0;
+        transform: rotate(-45deg);
+        transform-origin: bottom left;
+    }
+}
+
+.section_slider__slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 52px 55px 67px;
+
+    @include media-up(md) {
+        flex-direction: inherit;
+        margin-left: -100px;
+    }
+}
+
+.section_slider__title {
+    margin-right: 32px;
+    margin-bottom: 20px;
+
+    @include media-up(md) {
+        margin-bottom: 0;
+    }
+}
+
+.section_slider__btn_popup {
+    max-width: 212px;
+}

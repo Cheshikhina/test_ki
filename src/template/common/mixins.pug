@@ -1,0 +1,4 @@
+mixin repeatTags(tagName, length, text="")
+    - for(var x = 0; x < length; x++)
+        #{tagName}&attributes(attributes)= text
+            block

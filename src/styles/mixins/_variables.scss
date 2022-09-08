@@ -1,0 +1,58 @@
+:root {
+    --color-text: #fff;
+    --color-header: #b47ff6;
+    --color-footer: #d87ff6;
+    --color-main: #a6c9ff;
+    --color-btn: #ff4b4b;
+    --color-slider: #7029cb;
+    --color-block1: #3ade4b;
+    --color-block2: #d4ff5a;
+    --color-block2-items: #497957;
+    --color-border: #00ff4a;
+}
+
+$grid-breakpoints: (
+    sm: 575.98px,
+    md: 767.98px,
+    lg: 991.98px,
+    xl: 1291.98px
+) !default;
+
+$container-max-widths: (
+    sm: 273px,
+    md: 369px,
+    lg: 481px,
+    xl: 585px
+) !default;
+
+$font-sizes: (
+  h1: 45px,
+  h1-small: 30px,
+  h2: 30px,
+  h2-small: 24px,
+  btn: 24px,
+  number: 53px,
+  number-small: 30px,
+  text: 28px,
+  text-small: 20px,
+  default: 28px,
+  default-small: 20px
+);
+
+$line-heights: (
+  h1: 1,
+  h2: 1.5,
+  text: 1,
+  btn: 28px,
+  number: 62px,
+  default: 1
+);
+
+$font-weights: (
+  h1: 700,
+  h2: 500,
+  text: 500,
+  btn: 400,
+  number: 400,
+  default: 400
+);

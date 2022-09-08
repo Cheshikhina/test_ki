@@ -1,0 +1,70 @@
+@mixin make-container() {
+    margin: 0 15px;
+
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+            @if $breakpoint == 'xl' {
+                margin-left: calc(50vw - #{map-get($container-max-widths, $breakpoint)} - 45px);
+                margin-right: calc(50vw - #{map-get($container-max-widths, $breakpoint)} + 45px);
+            }
+
+            @else {
+                margin: 0 calc(50vw - #{map-get($container-max-widths, $breakpoint)});
+            }
+        }
+    }
+}
+@mixin media-up($breakpoint-name) {
+    @media (min-width: map-get($grid-breakpoints, $breakpoint-name)) {
+        @content;
+    }
+}
+@mixin transition($properties, $duration: 0.3s) {
+    $transition: ();
+
+    @each $property in $properties {
+        $transition: append($transition, ($property $duration), $separator: comma);
+    }
+    transition: $transition;
+}
+@mixin font($tag: default, $height: false) {
+    font-weight: map-get($font-weights, $tag);
+
+    @if map-get($font-sizes, '#{$tag}-small') {
+        font-size: map-get($font-sizes, '#{$tag}-small');
+    }
+
+    @else {
+        font-size: map-get($font-sizes, default-small);
+    }
+
+    @if $height {
+        line-height: map-get($line-heights, default);
+    }
+
+    @else {
+        line-height: map-get($line-heights, $tag);
+    }
+
+    @include media-up(md) {
+        font-size: map-get($font-sizes, $tag);
+
+        @if $height {
+            line-height: map-get($line-heights, $tag);
+        }
+    }
+}
+@mixin link-hover {
+    @include transition(border-color);
+    border-bottom: 2px solid transparent;
+
+    &:hover,
+    &:focus {
+        border-bottom-color: var(--color-text);
+    }
+}
+@mixin list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}

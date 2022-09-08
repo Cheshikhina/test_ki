@@ -1,0 +1,61 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        title Test
+
+    body
+        include ../common/mixins
+
+        .container 
+            header.header
+                nav.header__navigation
+                    +repeatTags("a", 3, "Text")(class="link" href="#")
+                
+                .header__menu
+                    input(type="checkbox" id="menu_toggle" class="header__menu_toggle visually_hidden")
+                    label(for="menu_toggle" class="header__menu_btn")
+                        span
+                    .header__menu_wrap
+                        ul.header__menu_box
+                            +repeatTags("li", 4)(class="header__menu_link")
+                                a(class="link" href="#") Text 
+                        a(class="btn" href="#popup")= "Open pop-up button"
+                
+            main
+                section.section_slider
+                    .section_slider__wrap.swiper
+                        button(class="section_slider__btn section_slider__btn-prev swiper-button-prev" type="button")
+                        button(class="section_slider__btn section_slider__btn-next swiper-button-next" type="button")
+
+                        .swiper-wrapper   
+                            +repeatTags("div", 3)(class="swiper-slide")
+                                .section_slider__slide
+                                    h1.section_slider__title.h1= "H1 text"
+                                    a(class="btn section_slider__btn_popup" href="#popup")= "Open pop-up button"
+
+                section.section.section_1
+                    h2.section__title.h2= "H2 text"
+                    ol.section_1__wrap
+                        +repeatTags("li", 4)(class="section_1__item")
+
+                section.section.section_2
+                    h2.section__title.h2= "H2 text"
+                    div.section_2__wrap
+                        +repeatTags("div", 5)(class="section_2__item")
+
+                section.section.section_3
+                    p.section_3__text= "Text utp"
+                    a(class="btn" href="#popup")= "Open pop-up button"
+
+                .popup
+                    a(href="#x" class="overlay" id="popup")
+                    .popup__body
+                        p.h2= "Pop-up"
+                        a(href="#close" class="poup__close")
+
+            footer.footer
+                nav.footer__navigation
+                    +repeatTags("a", 4, "Text")(class="link footer__link" href="#")
